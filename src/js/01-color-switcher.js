@@ -4,7 +4,7 @@ const stop = document.querySelector('button[data-stop]');
 
 let isActive = false;
 stop.setAttribute('disabled', true);
-
+//коментар
 start.addEventListener('click', bodyStyle);
 stop.addEventListener('click', btnStop);
 
