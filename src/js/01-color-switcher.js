@@ -1,20 +1,22 @@
 const body = document.querySelector('body');
-const start = document.querySelector('button[data-start]');
-const stop = document.querySelector('button[data-stop]');
+const startBtn = document.querySelector('button[data-start]');
+const stopBtn = document.querySelector('button[data-stop]');
 
-let isActive = false;
-stop.setAttribute('disabled', true);
-//коментар
-start.addEventListener('click', bodyStyle);
-stop.addEventListener('click', btnStop);
+// let isActive = false;
+let timerId = null;
+
+stopBtn.setAttribute('disabled', true);
+
+startBtn.addEventListener('click', bodyStyle);
+stopBtn.addEventListener('click', btnStop);
 
 function bodyStyle() { 
-    if (isActive) {
+    if (timerId) {
         return;
     }
-    start.setAttribute('disabled', true);
-    stop.removeAttribute('disabled');
-    isActive = true;
+    startBtn.setAttribute('disabled', true);
+    stopBtn.removeAttribute('disabled');
+    // isActive = true;
     timerId = setInterval(() => {
         body.style.backgroundColor = getRandomHexColor();
     }, 1000);
@@ -23,9 +25,10 @@ function bodyStyle() {
 
 function btnStop() {
     clearInterval(timerId);
-    isActive = false;
-    stop.setAttribute('disabled', true);
-    start.removeAttribute('disabled');
+    // isActive = false;
+    timerId = undefined;
+    stopBtn.setAttribute('disabled', true);
+    startBtn.removeAttribute('disabled');
 }
 
 function getRandomHexColor() {
