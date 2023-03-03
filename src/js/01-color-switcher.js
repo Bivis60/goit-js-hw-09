@@ -26,7 +26,7 @@ function bodyStyle() {
 function btnStop() {
     clearInterval(timerId);
     // isActive = false;
-    timerId = undefined;
+    timerId = null;
     stopBtn.setAttribute('disabled', true);
     startBtn.removeAttribute('disabled');
 }
